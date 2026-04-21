@@ -1,305 +1,884 @@
-# Plan Operativo de Investigación
+# Backlog de Investigación
 
-## Propósito del documento
+## Cómo leer este backlog
 
-Este documento operacionaliza el contenido de [pitch.md](C:/Trabajo/investigaciones/calendariotributario/pitch.md:1) y lo convierte en un plan de trabajo ejecutable para un ciclo de investigación de 6 semanas bajo la cadencia de Shape Up.
+Este documento convierte el plan de investigación en un backlog ejecutable y actualizable. `pitch.md` sigue siendo la referencia estratégica; este archivo concentra la ejecución diaria.
 
-Su función es complementar el pitch, no reemplazarlo. El pitch define la apuesta y los frentes; este plan define cómo ejecutar la investigación, con qué entregables, en qué secuencia, con qué responsables y con qué criterios de salida.
+- El backlog está agrupado en 7 épicas, una por cada frente 4.1-4.7.
+- Cada épica contiene historias de usuario formales, con tareas chequeables, dueño, dependencias, entregable y criterios de aceptación.
+- El avance visible se lleva en dos niveles:
+  - por HU: `Estado` y `% avance`;
+  - por tarea: checklist dentro de cada HU.
+- El backlog inicial contiene `26 HU` porque ese es el inventario operativo explícitamente definido para las épicas.
+- La semana 6 no agrega nuevas HU: se usa para cerrar HU abiertas, validar criterios y tomar la decisión Go / No-go.
 
-El documento sirve como guía de ejecución semanal, herramienta de alineación entre roles y mecanismo de seguimiento para la betting table de cierre del ciclo.
+## Tablero de avance global
 
-## Objetivo y preguntas críticas
+| Épica | HU totales | No iniciadas | En curso | Bloqueadas | En revisión | Completadas | % avance | Dueño |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| 4.1 Regulación | 4 | 4 | 0 | 0 | 0 | 0 | 0% | Product Researcher + Experto fiscal |
+| 4.2 Usuarios | 4 | 4 | 0 | 0 | 0 | 0 | 0% | UX Researcher + Product Researcher |
+| 4.3 Competencia | 3 | 3 | 0 | 0 | 0 | 0 | 0% | Product Researcher |
+| 4.4 Técnica | 4 | 4 | 0 | 0 | 0 | 0 | 0% | Engineer |
+| 4.5 Legal | 3 | 3 | 0 | 0 | 0 | 0 | 0% | Abogado fiscal + Product Researcher |
+| 4.6 Negocio | 3 | 3 | 0 | 0 | 0 | 0 | 0% | Product Researcher + Engineer |
+| 4.7 Mantenimiento | 5 | 5 | 0 | 0 | 0 | 0 | 0% | Engineer + Experto fiscal + Product Researcher |
+| **Total** | **26** | **26** | **0** | **0** | **0** | **0** | **0%** | Research Team |
 
-**Objetivo general**
+## Reglas de estado, avance y evidencia
 
-Determinar si existe una oportunidad real, viable y defendible para construir un producto de calendario tributario global con notificaciones inteligentes, sin construir aún el producto final.
+**Estados válidos**
 
-**Preguntas críticas que esta investigación debe responder**
+- `No iniciada`: 0 tareas completadas.
+- `En curso`: hay al menos 1 tarea completada, pero no todas.
+- `Bloqueada`: existe un bloqueo activo que impide ejecutar la siguiente tarea.
+- `En revisión`: todas las tareas están completas, pero faltan validación o evidencia.
+- `Completada`: criterios de aceptación validados y evidencia registrada.
 
-1. ¿Cuáles son los 10 mercados prioritarios que vale la pena estudiar en profundidad y cuáles 3 quedarían mejor posicionados para un MVP?
-2. ¿Es posible modelar reglas tributarias suficientemente bien como para generar un calendario personalizado a partir de un set mínimo de datos del usuario?
-3. ¿Qué datos mínimos del perfil fiscal son necesarios para determinar obligaciones sin caer en complejidad innecesaria?
-4. ¿Con qué frecuencia cambian las fechas y reglas tributarias en los mercados objetivo y cuál es la forma viable de mantener la información actualizada?
-5. ¿Cómo deben manejarse los casos ambiguos o sujetos a interpretación para no erosionar la confianza del usuario?
-6. ¿Qué modelo de negocio tiene más probabilidad de ser sostenible: B2C, B2B, B2B2C, marketplace o API de datos?
-7. ¿Qué riesgos legales, regulatorios y de privacidad deben acotarse antes de considerar una construcción?
-8. ¿Qué señales concretas de dolor, disposición a pagar y diferenciación competitiva justificarían un Go al final del ciclo?
+**Cálculo de avance**
 
-**Definición de éxito del ciclo**
+- `% avance = tareas completadas / tareas totales`, redondeado al entero más cercano.
+- Cada HU debe tener entre 3 y 7 tareas.
+- Una épica acumula su `% avance` a partir del promedio simple de sus HU.
 
-La investigación se considera suficientemente completa cuando las preguntas anteriores tienen respuesta basada en evidencia documentada, entregables cerrados por frente y una recomendación Go / No-go defendible en la semana 6.
+**Reglas de evidencia**
 
-## Alcance confirmado
+- Ninguna HU puede pasar a `Completada` sin llenar:
+  - `Fuente`
+  - `Fecha`
+  - `Hallazgo`
+  - `Ubicación del artefacto`
+- Si las tareas están cerradas pero falta evidencia, la HU queda en `En revisión`.
+- Si una dependencia crítica no se resuelve dentro de la semana objetivo, la HU pasa a `Bloqueada`.
 
-- Duración del ciclo: 6 semanas de investigación.
-- Metodología de cadencia: Shape Up, con síntesis semanal y decisión final en betting table.
-- Tipo de producto investigado: calendario tributario y sistema de recordatorios; no declaración, pago ni asesoría fiscal automatizada.
-- Frentes de investigación incluidos:
-  - 4.1 Regulación y tributación
-  - 4.2 Usuarios
-  - 4.3 Competencia
-  - 4.4 Técnica
-  - 4.5 Legal y cumplimiento
-  - 4.6 Modelo de negocio
-  - 4.7 Mantenimiento y actualización del calendario
-- Mercados objetivo del pitch:
-  - Latinoamérica: México, Colombia, Argentina, Chile, Brasil
-  - Norteamérica: EE.UU., Canadá
-  - Europa: España, Alemania
-  - Asia-Pacífico: Australia o India
-- Entregables obligatorios del ciclo:
-  - Matriz de obligaciones tributarias por país/jurisdicción
-  - Documento de Jobs to Be Done y personas
-  - Mapa competitivo con oportunidades de diferenciación
-  - Documento de arquitectura conceptual y decisiones técnicas
-  - Memorando legal
-  - Modelo financiero one-pager
-  - Modelo operativo de mantenimiento del calendario con costo estimado mensual por país
-- Decisión operativa necesaria para ejecutar el plan:
-  - El décimo mercado del bloque Asia-Pacífico se cerrará en la semana 1 entre Australia e India, usando como criterio la accesibilidad de fuentes oficiales, claridad regulatoria y relevancia comercial.
+**Ritmo de actualización**
 
-## Principios de ejecución
+- Actualizar el tablero global al cierre de cada semana.
+- Actualizar cada HU al cierre de cualquier sesión de trabajo relevante.
+- Escalar bloqueos en el cierre semanal si impiden ejecutar la siguiente tarea.
 
-1. Investigar primero la viabilidad del problema y del modelo operativo; no diseñar ni construir el producto final.
-2. Mantener el alcance en 10 mercados como máximo durante este ciclo; cualquier expansión queda fuera.
-3. Tratar el mantenimiento del calendario como riesgo crítico y priorizarlo sobre detalles de interfaz, branding o integraciones.
-4. Trabajar con el modelo mínimo suficiente de datos; durante la investigación se privilegia spreadsheet, matriz y reglas conceptuales sobre implementación definitiva.
-5. Priorizar evidencia trazable: fuente oficial, entrevista grabable o documentada, benchmark verificable y hallazgo fechado.
-6. No convertir el producto investigado en software de declaración, pago, contabilidad o facturación.
-7. No investigar integraciones con Google Calendar, Outlook o software contable antes de validar que existe demanda clara.
-8. No asumir estabilidad regulatoria; cada hallazgo debe registrar fecha, fuente y probabilidad de cambio.
-9. No investigar blockchain, tokenización ni IA generativa para asesoría fiscal en este ciclo.
-10. Toda hipótesis debe tener dueño, fuente de validación, estado y decisión asociada.
-11. Cada semana debe cerrar con síntesis, bloqueos, riesgos y ajuste de prioridades para la semana siguiente.
-12. Ningún frente se considera terminado si no tiene entregable, criterio de salida y evidencia asociada.
+## Épicas del backlog
 
-## Frentes de trabajo
+### Épica 4.1 Regulación y tributación
 
-### 4.1 Investigación Regulatoria y Tributaria
+| Épica | Objetivo | Dueño | Prioridad | Entregable macro | % avance |
+|---|---|---|---|---|---:|
+| 4.1 Regulación y tributación | Entender la estructura de obligaciones tributarias en los mercados objetivo y dejar una matriz utilizable por técnica, legal y mantenimiento. | Product Researcher + Experto fiscal | Alta | Matriz estructurada de obligaciones tributarias por país/jurisdicción | 0% |
 
-| Frente | Objetivo | Actividades | Entregable | Dependencias | Responsable | Criterio de salida |
-|---|---|---|---|---|---|---|
-| 4.1 Regulación y tributación | Entender la estructura de obligaciones tributarias en los mercados objetivo y documentar fuentes oficiales confiables. | Seleccionar y confirmar los 10 mercados.<br>Mapear categorías de impuestos comunes: renta, IVA/VAT/GST, nómina, dividendos/capital, municipales e informativas.<br>Documentar autoridad fiscal, periodicidad, reglas de pertenencia a régimen, fuente oficial de fechas y sanciones por incumplimiento.<br>Identificar si existe calendario oficial descargable, API o canal formal de actualización.<br>Revisar fuentes internacionales comparables: OECD, IBFD, Tax Foundation, CIAT. | Matriz estructurada de obligaciones tributarias por país/jurisdicción, con fuente oficial y notas de riesgo por mercado. | Confirmación del mercado Asia-Pacífico en semana 1.<br>Acceso a fuentes oficiales y apoyo del experto fiscal. | Product Researcher (lead) + Experto fiscal | Los 10 mercados están documentados con fuente oficial, tipos de obligación, periodicidad, criterio de elegibilidad y nota de sanciones; la matriz es utilizable por técnica y mantenimiento. |
+Salida esperada: matriz tributaria cerrada, con fuentes oficiales, periodicidades, criterios de elegibilidad y notas de sanción para los 10 mercados.
 
-### 4.2 Investigación de Usuarios
+#### HU-REG-01 Confirmar 10 mercados prioritarios
 
-| Frente | Objetivo | Actividades | Entregable | Dependencias | Responsable | Criterio de salida |
-|---|---|---|---|---|---|---|
-| 4.2 Usuarios | Validar la existencia del problema, su severidad y la disposición a pagar por segmento. | Definir segmentos: freelancers, PYMES y contadores.<br>Preparar guía de entrevista y criterios de reclutamiento.<br>Realizar 15 entrevistas mínimo: 5 freelancers, 5 dueños de PYMES y 5 contadores.<br>Diseñar y ejecutar encuesta cuantitativa de 200+ respuestas.<br>Identificar herramientas actuales, frecuencia de multas/olvidos, disparadores de confianza y canales preferidos de notificación.<br>Validar si los contadores podrían funcionar como canal B2B2C o multi-cliente. | Documento de Jobs to Be Done, personas, síntesis de dolores, objeciones de confianza y señales de disposición a pagar. | Guía de entrevistas aprobada en semana 1.<br>Reclutamiento suficiente en semanas 1-3. | UX Researcher + Product Researcher | Se completaron las entrevistas objetivo, la encuesta cuantitativa tiene muestra suficiente y existe síntesis clara de dolor, comportamiento actual y willingness to pay por segmento. |
+- ID: `HU-REG-01`
+- Título: Confirmar 10 mercados prioritarios para el ciclo
+- Como / Quiero / Para: Como `Product Researcher`, quiero cerrar la lista final de 10 mercados y resolver Australia vs India, para evitar deriva de alcance y habilitar el resto del backlog regulatorio.
+- Semana objetivo: `w1`
+- Dueño: `Product Researcher`
+- Dependencias: `Ninguna`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Lista final de 10 mercados con criterio de selección documentado.
+- Criterios de aceptación:
+  - [ ] Existe una lista final de 10 mercados aprobada para el ciclo.
+  - [ ] La decisión Australia vs India está justificada por accesibilidad de fuentes y relevancia comercial.
+- Tareas:
+  - [ ] Revisar la lista base de mercados definida en `pitch.md`.
+  - [ ] Comparar Australia e India con criterios de accesibilidad regulatoria.
+  - [ ] Documentar la selección final y la justificación de cada mercado.
+  - [ ] Confirmar que el resto del backlog usa la misma lista cerrada.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-### 4.3 Investigación Competitiva
+#### HU-REG-02 Mapear categorías tributarias comunes
 
-| Frente | Objetivo | Actividades | Entregable | Dependencias | Responsable | Criterio de salida |
-|---|---|---|---|---|---|---|
-| 4.3 Competencia | Entender el panorama de soluciones y ubicar el espacio diferenciador del producto. | Analizar competidores directos: TaxJar, Avalara, QuickBooks Tax, Taxfix y Declarando.es.<br>Analizar jugadores regionales en LATAM: Alegra, Siigo, CONTPAQi, Aspel, Colppy y Xubio.<br>Documentar cobertura geográfica, foco de producto, pricing, presencia de notificaciones, multi-jurisdicción y quejas recurrentes de usuarios.<br>Identificar vacíos del mercado: recordatorios proactivos, enfoque agnóstico al país, foco en personas físicas y PYMES. | Mapa competitivo con comparativa funcional, pricing y oportunidades de diferenciación. | Acceso a pricing público, demos, sitios web y reseñas de usuarios. | Product Researcher | Existe matriz comparativa de competidores, 2 o más vectores claros de diferenciación potencial y benchmark de pricing utilizable por negocio. |
+- ID: `HU-REG-02`
+- Título: Mapear categorías tributarias comunes por mercado
+- Como / Quiero / Para: Como `Experto fiscal`, quiero mapear las categorías tributarias comunes de los mercados objetivo, para construir una taxonomía mínima comparable entre países.
+- Semana objetivo: `w1-w2`
+- Dueño: `Experto fiscal`
+- Dependencias: `HU-REG-01`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Taxonomía común de impuestos y obligaciones informativas.
+- Criterios de aceptación:
+  - [ ] Existe una taxonomía mínima compartida para renta, IVA/VAT/GST, nómina, capital y obligaciones informativas.
+  - [ ] La taxonomía es suficientemente clara para soportar la matriz tributaria y el modelado técnico.
+- Tareas:
+  - [ ] Identificar categorías tributarias comunes presentes en los 10 mercados.
+  - [ ] Normalizar nombres para evitar duplicidades semánticas.
+  - [ ] Marcar excepciones locales que no encajen en la taxonomía base.
+  - [ ] Validar la taxonomía con el Product Researcher para uso transversal.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-### 4.4 Investigación Técnica
+#### HU-REG-03 Documentar fuentes, periodicidades y sanciones
 
-| Frente | Objetivo | Actividades | Entregable | Dependencias | Responsable | Criterio de salida |
-|---|---|---|---|---|---|---|
-| 4.4 Técnica | Evaluar si la solución es técnicamente factible y definir la arquitectura mínima viable para un eventual MVP. | Definir la estructura genérica de una obligación tributaria y sus campos mínimos.<br>Explorar opciones para modelar elegibilidad: reglas en código, motores de reglas o estructuras declarativas.<br>Evaluar disponibilidad de fuentes abiertas y necesidad de curación manual.<br>Comparar proveedores y opciones para notificaciones: email, SMS, push y WhatsApp.<br>Evaluar stack preliminar para MVP: backend, base de datos, frontend y hosting.<br>Traducir requisitos de mantenimiento en implicaciones técnicas de versionado, audit log y niveles de confianza del dato. | Documento de arquitectura conceptual y matriz de decisiones técnicas con opciones, criterios y recomendación. | Hallazgos iniciales de 4.1 y 4.7 sobre modelado de reglas, formatos y frecuencia de cambios. | Engineer (técnico) | Existe una arquitectura conceptual mínima, una propuesta de modelo de datos, una ruta técnica viable para reglas y notificaciones y una lista explícita de riesgos técnicos abiertos. |
+- ID: `HU-REG-03`
+- Título: Documentar fuentes oficiales, periodicidades y sanciones por mercado
+- Como / Quiero / Para: Como `Product Researcher`, quiero documentar las fuentes oficiales, periodicidades y sanciones de cada mercado, para dimensionar la confiabilidad del dato y el dolor del usuario.
+- Semana objetivo: `w2-w3`
+- Dueño: `Product Researcher`
+- Dependencias: `HU-REG-01`, `HU-REG-02`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Inventario por mercado de autoridad fiscal, periodicidad, fuente oficial y sanciones.
+- Criterios de aceptación:
+  - [ ] Los 10 mercados tienen autoridad fiscal y fuente oficial registradas.
+  - [ ] Cada mercado tiene periodicidades y notas de sanción mínimas documentadas.
+- Tareas:
+  - [ ] Registrar autoridad fiscal principal por mercado.
+  - [ ] Documentar periodicidades de presentación relevantes.
+  - [ ] Ubicar fuente oficial de fechas, calendario o publicación equivalente.
+  - [ ] Registrar sanciones o consecuencias de incumplimiento cuando existan.
+  - [ ] Señalar mercados con información incompleta o ambigua.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-### 4.5 Investigación Legal y de Cumplimiento
+#### HU-REG-04 Consolidar matriz tributaria usable
 
-| Frente | Objetivo | Actividades | Entregable | Dependencias | Responsable | Criterio de salida |
-|---|---|---|---|---|---|---|
-| 4.5 Legal y compliance | Determinar si el servicio puede operar como producto informativo sin incurrir en riesgo legal desproporcionado. | Definir el borde entre información fiscal y asesoría fiscal en los mercados objetivo.<br>Revisar exposición por datos incorrectos, errores de fecha y limitación de responsabilidad.<br>Mapear obligaciones de privacidad y retención de datos: GDPR, CCPA, LGPD, Ley 1581 y equivalentes.<br>Investigar licencias, registros o restricciones para operar por país.<br>Revisar safe harbors, disclaimers y términos de servicio comparables en soluciones existentes.<br>Evaluar si un botón o red de referidos a contadores reduce riesgo legal y abre oportunidad comercial. | Memorando legal con riesgos, recomendaciones, disclaimers base y restricciones de operación. | Descripción funcional mínima del servicio desde 4.4 y priorización de mercados desde 4.1. | Abogado fiscal + Product Researcher | El memorando clasifica el riesgo legal por mercado y deja claro si el producto puede presentarse como informativo, qué condiciones mínimas debe cumplir y qué riesgos bloquearían un Go. |
+- ID: `HU-REG-04`
+- Título: Consolidar una matriz tributaria utilizable por otros frentes
+- Como / Quiero / Para: Como `Product Researcher`, quiero consolidar una matriz tributaria usable, para que técnica, legal y mantenimiento trabajen sobre una base común.
+- Semana objetivo: `w3`
+- Dueño: `Product Researcher`
+- Dependencias: `HU-REG-02`, `HU-REG-03`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Matriz tributaria consolidada y lista para consumo interno.
+- Criterios de aceptación:
+  - [ ] La matriz contiene mercado, categoría, periodicidad, elegibilidad, fuente y notas de riesgo.
+  - [ ] La matriz puede ser reutilizada por las épicas 4.4, 4.5 y 4.7 sin reinterpretación.
+- Tareas:
+  - [ ] Consolidar la taxonomía y las fuentes en una sola matriz.
+  - [ ] Revisar consistencia de nombres, columnas y cobertura.
+  - [ ] Marcar huecos de información pendientes o inciertos.
+  - [ ] Compartir la versión de referencia con técnica, legal y mantenimiento.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-### 4.6 Investigación de Modelo de Negocio
+### Épica 4.2 Usuarios
 
-| Frente | Objetivo | Actividades | Entregable | Dependencias | Responsable | Criterio de salida |
-|---|---|---|---|---|---|---|
-| 4.6 Modelo de negocio | Determinar si existe una forma sostenible y escalable de monetizar el servicio. | Evaluar opciones: freemium B2C, SaaS B2B para contadores, B2B2C, marketplace de contadores y API de datos tributarios.<br>Levantar benchmarks de pricing y churn de referencias comparables.<br>Estimar TAM por país clave y por segmento.<br>Calcular CAC y LTV preliminares por canal potencial.<br>Integrar hallazgos de usuarios, competencia, legal y mantenimiento para construir escenarios conservador, base y optimista. | Modelo financiero one-pager con escenarios, riesgos clave y recomendación del modelo más prometedor. | Resultados de 4.2, 4.3, 4.5 y 4.7. | Product Researcher + Engineer | Existe un modelo financiero preliminar con supuestos explícitos, márgenes estimados, sensibilidad por costo de mantenimiento y una recomendación clara de modelo inicial. |
+| Épica | Objetivo | Dueño | Prioridad | Entregable macro | % avance |
+|---|---|---|---|---|---:|
+| 4.2 Usuarios | Validar dolor, severidad, confianza y disposición a pagar en freelancers, PYMES y contadores. | UX Researcher + Product Researcher | Alta | Documento de JTBD, personas y síntesis de dolor y willingness to pay | 0% |
 
-### 4.7 Investigación de Mantenimiento y Actualización del Calendario
+Salida esperada: evidencia cualitativa y cuantitativa suficiente para confirmar dolor, confianza requerida y señales de monetización por segmento.
 
-| Frente | Objetivo | Actividades | Entregable | Dependencias | Responsable | Criterio de salida |
-|---|---|---|---|---|---|---|
-| 4.7 Mantenimiento y actualización del calendario (prioridad crítica) | Entender cómo mantener el calendario preciso y vigente sin que el costo operativo destruya la viabilidad del negocio. | Catalogar tipos de cambio: fechas, periodicidad, nuevas obligaciones, derogaciones, cambios de elegibilidad y suspensiones temporales.<br>Medir frecuencia histórica de cambios por país y mapear canales oficiales de publicación.<br>Evaluar opciones operativas: curación manual, scraping, monitoreo automatizado, alianzas, comunidad experta y modelo híbrido.<br>Definir flujo de actualización, revisión humana, versionado, audit log y notificación a usuarios afectados.<br>Evaluar uso de agentes de IA para extracción documental y monitoreo, siempre con validación humana.<br>Comparar costo de automatización, terceros y equipo humano.<br>Ejecutar PoC del agente de extracción de PDFs sobre 50 resoluciones reales de 3 países. | Propuesta de modelo operativo de mantenimiento, costo estimado mensual por país, definición del flujo de actualización y reporte de resultados del PoC. | Insumos de 4.1 para fuentes oficiales.<br>Apoyo técnico de 4.4 para evaluar herramientas y arquitectura.<br>Revisión legal de 4.5 para uso de fuentes y comunicaciones. | Engineer + Experto fiscal + Product Researcher | Existe un modelo operativo defendible, con costo mensual estimado por país, límites de automatización claros, criterios de validación humana y señal concreta de si el mantenimiento es o no el cuello de botella del negocio. |
+#### HU-USR-01 Diseñar reclutamiento y guía
 
-## Cronograma de 6 semanas
+- ID: `HU-USR-01`
+- Título: Diseñar reclutamiento, muestra y guía de entrevistas
+- Como / Quiero / Para: Como `UX Researcher`, quiero definir el plan de reclutamiento y la guía de entrevistas, para capturar evidencia comparable entre segmentos desde el inicio.
+- Semana objetivo: `w1`
+- Dueño: `UX Researcher`
+- Dependencias: `HU-REG-01`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Plan de reclutamiento y guía de entrevistas aprobados.
+- Criterios de aceptación:
+  - [ ] Existe una guía de entrevistas con preguntas sobre control actual, dolor, confianza y pago.
+  - [ ] Existe una muestra objetivo por segmento con criterio de reclutamiento claro.
+- Tareas:
+  - [ ] Definir segmentos y tamaño mínimo de muestra por tipo de usuario.
+  - [ ] Redactar la guía de entrevista con preguntas comparables.
+  - [ ] Definir criterios de exclusión y señales a capturar en cada sesión.
+  - [ ] Preparar plantilla de notas y síntesis por entrevista.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-| Semana | Objetivo | Actividades | Entregables | Roles involucrados | Riesgos |
-|---|---|---|---|---|---|
-| Semana 1 | Delimitar el ciclo y preparar la ejecución. | Confirmar equipo, cadencia y responsables.<br>Elegir el mercado Asia-Pacífico entre Australia e India.<br>Crear trackers de hipótesis, evidencia y bloqueos.<br>Definir guía de entrevistas y plan de reclutamiento.<br>Levantar estructura inicial de la matriz tributaria.<br>Hacer shortlist de competidores y fuentes oficiales por país.<br>Definir muestra del PoC de mantenimiento y extracción documental. | Plan de reclutamiento.<br>Guía de entrevistas.<br>Template de matriz tributaria.<br>Lista de países final.<br>Tracker de hipótesis y evidencia.<br>Lista corta de competidores y fuentes oficiales. | Product Researcher, UX Researcher, Experto fiscal, Engineer | Deriva de alcance.<br>Retraso en reclutamiento.<br>Fuentes oficiales difíciles de ubicar en 1 o más mercados. |
-| Semana 2 | Obtener primeros hallazgos de regulación, usuarios y competencia. | Completar mapeo regulatorio de los primeros 5 países.<br>Realizar primeras 5 entrevistas.<br>Iniciar benchmark de pricing y features de competidores.<br>Mapear canales oficiales de cambio tributario y formatos documentales.<br>Definir primera versión del modelo de datos conceptual.<br>Preparar lista de abogados y proveedores a contactar. | Avance de matriz tributaria para 5 países.<br>Notas sintetizadas de 5 entrevistas.<br>Matriz competitiva preliminar.<br>Mapa inicial de fuentes de actualización.<br>Borrador del modelo de datos. | Product Researcher, UX Researcher, Experto fiscal, Engineer | Hallazgos dispersos sin síntesis.<br>Dificultad para comparar competidores regionales.<br>Complejidad temprana del modelo de datos. |
-| Semana 3 | Profundizar y cerrar el grueso del descubrimiento cualitativo. | Completar las entrevistas restantes hasta llegar al mínimo objetivo.<br>Completar mapeo regulatorio de los 10 mercados.<br>Levantar frecuencia histórica de cambios por país.<br>Iniciar consultas legales con 1-2 abogados fiscales.<br>Contactar proveedores de datos tributarios para cotizaciones.<br>Diseñar encuesta cuantitativa y preparar lanzamiento.<br>Profundizar la evaluación técnica de reglas, notificaciones y stack. | Matriz tributaria completa.<br>Síntesis cualitativa de entrevistas.<br>Inventario de frecuencia de cambios y canales oficiales.<br>Brief legal inicial.<br>Lista de proveedores contactados.<br>Encuesta lista para lanzar. | Product Researcher, UX Researcher, Experto fiscal, Engineer, Abogado fiscal | Demora en respuesta de abogados o proveedores.<br>Calidad irregular de fuentes históricas.<br>Sesgo de muestra en entrevistas. |
-| Semana 4 | Validar técnica, legal y mantenimiento con evidencia más fuerte. | Ejecutar encuesta cuantitativa.<br>Completar benchmark competitivo y pricing.<br>Consolidar recomendaciones legales por mercado.<br>Ejecutar PoC de extracción de PDFs sobre 50 resoluciones de 3 países.<br>Evaluar precisión, costo y necesidad de revisión humana.<br>Comparar opciones operativas de mantenimiento.<br>Refinar arquitectura conceptual con hallazgos de mantenimiento. | Resultados preliminares de encuesta.<br>Mapa competitivo final.<br>Borrador del memorando legal.<br>Reporte del PoC de extracción documental.<br>Borrador de arquitectura conceptual. | UX Researcher, Product Researcher, Engineer, Experto fiscal, Abogado fiscal | Precisión baja del PoC.<br>Encuesta con muestra insuficiente.<br>Riesgo legal mayor al esperado. |
-| Semana 5 | Sintetizar, modelar negocio y seleccionar dirección para MVP. | Analizar encuesta y cruzarla con entrevistas.<br>Construir JTBD y personas finales.<br>Definir los 3 países candidatos para MVP.<br>Estimar costo mensual de mantenimiento por país.<br>Construir modelo financiero con escenarios conservador, base y optimista.<br>Definir propuesta de modelo operativo de mantenimiento.<br>Preparar borradores de decisión Go / No-go. | Documento JTBD y personas.<br>Modelo operativo de mantenimiento.<br>Estimación de costo por país.<br>Modelo financiero one-pager.<br>Lista de 3 países candidatos para MVP. | Product Researcher, UX Researcher, Engineer, Experto fiscal | Conclusiones contradictorias entre frentes.<br>Costos de mantenimiento demasiado altos.<br>Sin diferenciación competitiva suficiente. |
-| Semana 6 | Consolidar hallazgos y tomar decisión. | Integrar todos los entregables en un documento de decisión.<br>Evaluar criterios Go / No-go uno por uno.<br>Documentar riesgos remanentes, supuestos y bloqueos.<br>Preparar narrativa para betting table.<br>Si el resultado es Go, esbozar el pitch de construcción del MVP. | Documento de decisión final.<br>Checklist Go / No-go completado.<br>Recomendación final para betting table.<br>Borrador de pitch de construcción del MVP, si aplica. | Product Researcher, Engineer, Experto fiscal, Abogado fiscal, UX Researcher | Falta de evidencia suficiente para decidir.<br>Diferencias entre stakeholders sobre el umbral de Go.<br>Demasiados riesgos abiertos sin priorización. |
+#### HU-USR-02 Entrevistar freelancers y PYMES
 
-## Dependencias y secuencia
+- ID: `HU-USR-02`
+- Título: Ejecutar entrevistas con freelancers y dueños de PYMES
+- Como / Quiero / Para: Como `UX Researcher`, quiero entrevistar freelancers y PYMES, para validar frecuencia del problema, severidad del dolor y soluciones actuales.
+- Semana objetivo: `w2-w3`
+- Dueño: `UX Researcher`
+- Dependencias: `HU-USR-01`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Síntesis cualitativa de entrevistas con freelancers y PYMES.
+- Criterios de aceptación:
+  - [ ] Se completaron al menos 10 entrevistas entre freelancers y PYMES.
+  - [ ] La síntesis recoge patrones claros de dolor, multas, comportamiento actual y confianza requerida.
+- Tareas:
+  - [ ] Reclutar participantes de los segmentos freelancers y PYMES.
+  - [ ] Ejecutar las entrevistas con registro estructurado de hallazgos.
+  - [ ] Sintetizar patrones de comportamiento y fricción por segmento.
+  - [ ] Extraer citas textuales útiles para la decisión del ciclo.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-**Frentes que pueden correr en paralelo desde el inicio**
+#### HU-USR-03 Entrevistar contadores y validar canal B2B2C
 
-- 4.1 Regulación y tributación
-- 4.2 Usuarios
-- 4.3 Competencia
-- 4.7 Mantenimiento y actualización del calendario
+- ID: `HU-USR-03`
+- Título: Entrevistar contadores y validar potencial como canal multi-cliente
+- Como / Quiero / Para: Como `Product Researcher`, quiero entrevistar contadores, para validar si pueden ser usuarios directos o canal B2B2C para el producto.
+- Semana objetivo: `w2-w3`
+- Dueño: `Product Researcher`
+- Dependencias: `HU-USR-01`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Síntesis de entrevistas a contadores y recomendación sobre canal B2B2C.
+- Criterios de aceptación:
+  - [ ] Se completaron al menos 5 entrevistas con contadores o asesores fiscales.
+  - [ ] Existe una conclusión explícita sobre uso multi-cliente y disposición a pagar/canal.
+- Tareas:
+  - [ ] Reclutar contadores con manejo de varios clientes.
+  - [ ] Ejecutar entrevistas enfocadas en operación, cambios de calendario y canal B2B2C.
+  - [ ] Sintetizar beneficios esperados, objeciones y barreras de adopción.
+  - [ ] Formular una recomendación de canal basada en evidencia.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-**Frentes que dependen de hallazgos previos**
+#### HU-USR-04 Lanzar encuesta y sintetizar JTBD/personas
 
-- 4.4 Técnica depende de insumos iniciales de 4.1 y 4.7 para decidir cómo modelar reglas, fuentes y versionado.
-- 4.5 Legal depende de la definición funcional mínima del servicio y de la priorización de mercados de 4.1.
-- 4.6 Modelo de negocio depende de señales de 4.2, benchmarks de 4.3, restricciones de 4.5 y costos de 4.7.
+- ID: `HU-USR-04`
+- Título: Lanzar encuesta cuantitativa y consolidar JTBD y personas
+- Como / Quiero / Para: Como `UX Researcher`, quiero ejecutar una encuesta y consolidar JTBD/personas, para complementar la evidencia cualitativa con señales de frecuencia y disposición a pagar.
+- Semana objetivo: `w3-w5`
+- Dueño: `UX Researcher`
+- Dependencias: `HU-USR-02`, `HU-USR-03`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Documento de JTBD, personas y resultados cuantitativos.
+- Criterios de aceptación:
+  - [ ] La encuesta tiene muestra suficiente para el análisis definido por el equipo.
+  - [ ] El documento final conecta resultados cuantitativos con JTBD y personas accionables.
+- Tareas:
+  - [ ] Diseñar la encuesta a partir de hallazgos de entrevistas.
+  - [ ] Lanzar la encuesta y monitorear la calidad de la muestra.
+  - [ ] Analizar resultados de frecuencia del problema, confianza y willingness to pay.
+  - [ ] Construir JTBD y personas con base en evidencia cualitativa y cuantitativa.
+  - [ ] Publicar una síntesis ejecutiva para negocio y producto.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-**Secuencia recomendada**
+### Épica 4.3 Competencia
 
-1. Delimitar países, trackers y muestra de investigación en semana 1.
-2. Cerrar regulación base, entrevistas y benchmark inicial entre semanas 2 y 3.
-3. Usar esos hallazgos para profundizar técnica, legal y mantenimiento entre semanas 3 y 4.
-4. Modelar negocio solo cuando ya exista señal de dolor, pricing, restricciones legales y costo operativo.
-5. Tomar la decisión Go / No-go únicamente después de integrar el resultado de 4.7, ya que este frente condiciona la viabilidad total.
+| Épica | Objetivo | Dueño | Prioridad | Entregable macro | % avance |
+|---|---|---|---|---|---:|
+| 4.3 Competencia | Entender el mercado actual, el pricing y los vacíos que podrían justificar diferenciación. | Product Researcher | Media | Mapa competitivo con pricing, cobertura y oportunidades de diferenciación | 0% |
 
-**Dependencias críticas**
+Salida esperada: benchmark competitivo con tesis explícita de espacio en blanco y señales de diferenciación defendible.
 
-- 4.1 alimenta directamente a 4.4 y 4.7.
-- 4.7 alimenta directamente a 4.4, 4.5, 4.6 y al Go / No-go.
-- 4.2 y 4.3 alimentan pricing, segmentación y canal en 4.6.
-- 4.5 puede bloquear el Go aun si el resto de frentes es positivo.
+#### HU-CMP-01 Analizar competidores globales
 
-## Evidencia y tracking
+- ID: `HU-CMP-01`
+- Título: Analizar competidores globales relevantes
+- Como / Quiero / Para: Como `Product Researcher`, quiero analizar competidores globales, para entender cobertura, pricing, foco de producto y límites del mercado actual.
+- Semana objetivo: `w1-w2`
+- Dueño: `Product Researcher`
+- Dependencias: `HU-REG-01`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Benchmark de competidores globales.
+- Criterios de aceptación:
+  - [ ] El benchmark cubre al menos TaxJar, Avalara, QuickBooks Tax, Taxfix y Declarando.es.
+  - [ ] Cada competidor tiene documentados pricing, cobertura, foco y debilidades relevantes.
+- Tareas:
+  - [ ] Levantar lista base de competidores globales del pitch.
+  - [ ] Documentar foco de producto, cobertura de mercados y casos de uso.
+  - [ ] Registrar pricing, formato comercial y señales de posicionamiento.
+  - [ ] Revisar reseñas o quejas frecuentes para detectar vacíos.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-La investigación se administrará con una tabla viva, actualizada al menos una vez por semana durante el cierre de síntesis. Los estados válidos son `Pendiente`, `En curso`, `Validada`, `Refutada` y `Bloqueada`.
+#### HU-CMP-02 Analizar competidores LATAM
 
-| Hipótesis | Fuente de validación | Estado | Dueño | Fecha | Hallazgo | Impacto |
-|---|---|---|---|---|---|---|
-| El problema de olvido y cumplimiento tardío es frecuente en freelancers y PYMES. | Entrevistas + encuesta | Pendiente | UX Researcher | Por completar | Por completar | Define si existe dolor suficiente para un producto independiente. |
-| Es posible modelar obligaciones tributarias de forma estructurada en al menos 5 de los 10 mercados. | Matriz regulatoria + revisión técnica | Pendiente | Experto fiscal + Engineer | Por completar | Por completar | Determina si el calendario personalizado es técnicamente viable. |
-| Los usuarios confiarán más si cada alerta referencia una fuente oficial. | Entrevistas + benchmark competitivo | Pendiente | Product Researcher | Por completar | Por completar | Afecta propuesta de valor y diseño de la experiencia. |
-| El mantenimiento del calendario puede operarse a un costo mensual viable por país. | Benchmark operativo + PoC + cotizaciones | Pendiente | Engineer | Por completar | Por completar | Condiciona el margen del negocio y el Go / No-go. |
-| El servicio puede operar como producto informativo con disclaimers adecuados. | Consulta legal + benchmark de términos de servicio | Pendiente | Abogado fiscal | Por completar | Por completar | Define viabilidad legal inicial. |
-| Los contadores pueden funcionar como canal de distribución o cuenta multi-cliente. | Entrevistas + benchmark competitivo | Pendiente | Product Researcher | Por completar | Por completar | Abre o cierra un canal B2B/B2B2C. |
-| Existe al menos un vector claro de diferenciación frente a soluciones actuales. | Benchmark competitivo + síntesis de usuarios | Pendiente | Product Researcher | Por completar | Por completar | Soporta la tesis de mercado. |
+- ID: `HU-CMP-02`
+- Título: Analizar competidores y alternativas regionales en LATAM
+- Como / Quiero / Para: Como `Product Researcher`, quiero analizar competidores regionales en LATAM, para identificar saturación local, patrones de producto y oportunidades de entrada.
+- Semana objetivo: `w2-w3`
+- Dueño: `Product Researcher`
+- Dependencias: `HU-CMP-01`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Benchmark de alternativas LATAM.
+- Criterios de aceptación:
+  - [ ] El benchmark cubre Alegra, Siigo, CONTPAQi, Aspel, Colppy y Xubio.
+  - [ ] Existe una lectura comparativa entre soluciones globales y regionales.
+- Tareas:
+  - [ ] Documentar soluciones regionales por país y segmento.
+  - [ ] Registrar pricing, promesa principal y alcance funcional.
+  - [ ] Identificar si resuelven calendario, declaración o gestión contable más amplia.
+  - [ ] Comparar su posicionamiento con los competidores globales ya analizados.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-**Reglas de operación del tracking**
+#### HU-CMP-03 Consolidar pricing, vacíos y diferenciación
 
-- Cada hipótesis debe tener evidencia adjunta o referencia directa al entregable que la soporta.
-- Ninguna hipótesis puede pasar a `Validada` sin una fuente verificable y una nota de hallazgo.
-- Las hipótesis `Bloqueadas` deben escalarse en el cierre semanal con decisión explícita.
-- Los cambios de estado deben registrar fecha y responsable.
+- ID: `HU-CMP-03`
+- Título: Consolidar pricing, vacíos del mercado y vectores de diferenciación
+- Como / Quiero / Para: Como `Product Researcher`, quiero consolidar pricing, vacíos y diferenciación, para sostener una tesis competitiva utilizable en negocio y Go / No-go.
+- Semana objetivo: `w4`
+- Dueño: `Product Researcher`
+- Dependencias: `HU-CMP-01`, `HU-CMP-02`, `HU-USR-02`, `HU-USR-03`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Mapa competitivo final con vectores de diferenciación.
+- Criterios de aceptación:
+  - [ ] El mapa competitivo presenta pricing comparable y principales vacíos por tipo de solución.
+  - [ ] Se documentan al menos 2 vectores claros de diferenciación potencial.
+- Tareas:
+  - [ ] Unificar los benchmarks global y LATAM en una sola matriz.
+  - [ ] Cruzar vacíos competitivos con dolores detectados en usuarios.
+  - [ ] Formular tesis de diferenciación con respaldo explícito.
+  - [ ] Publicar la versión final del mapa competitivo.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-## Criterios Go / No-go
+### Épica 4.4 Técnica
 
-La decisión final se tomará con el siguiente checklist operativo. Ningún criterio se marca como cumplido sin evidencia explícita adjunta.
+| Épica | Objetivo | Dueño | Prioridad | Entregable macro | % avance |
+|---|---|---|---|---|---:|
+| 4.4 Técnica | Evaluar si la solución es técnicamente factible y dejar una arquitectura conceptual mínima. | Engineer | Alta | Documento de arquitectura conceptual y matriz de decisiones técnicas | 0% |
 
-| Check | Criterio | Umbral de Go | Evidencia requerida | Dueño |
-|---|---|---|---|---|
-| [ ] | Confirmación del problema | Más del 70% de entrevistados confirma dolor real y recurrente. | Síntesis de entrevistas + encuesta | UX Researcher |
-| [ ] | Disposición a pagar | Willingness to Pay promedio superior a USD 10/mes. | Encuesta + entrevistas | Product Researcher |
-| [ ] | Estructurabilidad de datos | Al menos 5 de los 10 mercados pueden modelarse con suficiente claridad. | Matriz tributaria + revisión técnica | Experto fiscal + Engineer |
-| [ ] | Riesgo legal manejable | El riesgo queda clasificado como manejable con disclaimers, términos y límites operativos claros. | Memorando legal | Abogado fiscal |
-| [ ] | Negocio sostenible | El modelo tiene margen positivo en escenario conservador a 18 meses. | Modelo financiero | Product Researcher |
-| [ ] | Diferenciación competitiva | Existen al menos 2 vectores claros de diferenciación defendible. | Mapa competitivo + síntesis de usuarios | Product Researcher |
-| [ ] | Mantenimiento viable | Existe modelo operativo de mantenimiento con costo mensual estimado y defendible. | Documento de mantenimiento + PoC | Engineer |
-| [ ] | Fuente de actualización por país MVP | Cada país candidato a MVP tiene al menos una estrategia clara de actualización. | Matriz de fuentes + modelo operativo | Experto fiscal + Engineer |
+Salida esperada: modelo mínimo de obligación, estrategia preliminar de reglas y notificaciones, y arquitectura conceptual con riesgos técnicos abiertos.
 
-**Criterio de decisión**
+#### HU-TEC-01 Definir modelo mínimo de obligación
 
-- `Go`: todos los criterios críticos están cumplidos y no existen riesgos bloqueantes abiertos en legal o mantenimiento.
-- `No-go`: falla uno de los criterios estructurales del negocio: mantenimiento, legal, estructurabilidad de datos o margen económico.
-- `Go condicionado`: existe señal positiva general, pero queda una validación puntual de alto impacto con fecha y dueño definidos.
+- ID: `HU-TEC-01`
+- Título: Definir el modelo mínimo de una obligación tributaria
+- Como / Quiero / Para: Como `Engineer`, quiero definir el modelo mínimo de una obligación tributaria, para evaluar si el problema puede estructurarse sin sobre-diseño temprano.
+- Semana objetivo: `w2`
+- Dueño: `Engineer`
+- Dependencias: `HU-REG-02`, `HU-REG-03`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Borrador de modelo mínimo de obligación tributaria.
+- Criterios de aceptación:
+  - [ ] El modelo incluye jurisdicción, categoría, periodicidad, fuente y lógica mínima de elegibilidad.
+  - [ ] El modelo puede mapearse con la matriz tributaria actual sin campos imposibles de sostener.
+- Tareas:
+  - [ ] Revisar la matriz tributaria consolidada para identificar campos comunes.
+  - [ ] Proponer la estructura mínima de una obligación tributaria.
+  - [ ] Validar el borrador con Product Researcher y Experto fiscal.
+  - [ ] Registrar dudas abiertas o excepciones que no entren en el modelo.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
 
-## Riesgos y mitigaciones
+#### HU-TEC-02 Evaluar reglas, fuentes y versionado
+
+- ID: `HU-TEC-02`
+- Título: Evaluar modelado de reglas, fuentes y versionado del dato
+- Como / Quiero / Para: Como `Engineer`, quiero evaluar reglas, fuentes y versionado, para determinar cómo sostener un calendario personalizado y auditable.
+- Semana objetivo: `w3-w4`
+- Dueño: `Engineer`
+- Dependencias: `HU-TEC-01`, `HU-REG-04`, `HU-MNT-01`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Recomendación técnica sobre reglas, versionado y niveles de confianza del dato.
+- Criterios de aceptación:
+  - [ ] Existe una recomendación explícita sobre cómo modelar reglas de elegibilidad.
+  - [ ] Existe una propuesta mínima para versionado, audit log y niveles de confianza del dato.
+- Tareas:
+  - [ ] Evaluar opciones para representar reglas de elegibilidad.
+  - [ ] Analizar implicaciones de versionado y audit log para cambios regulatorios.
+  - [ ] Definir cómo representar `confirmed`, `estimated` y `unverified`.
+  - [ ] Documentar riesgos técnicos y trade-offs de cada opción.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+#### HU-TEC-03 Evaluar stack y notificaciones
+
+- ID: `HU-TEC-03`
+- Título: Evaluar stack preliminar y opciones de notificación
+- Como / Quiero / Para: Como `Engineer`, quiero evaluar stack y opciones de notificación, para estimar velocidad de MVP, complejidad operativa y canales viables.
+- Semana objetivo: `w3-w4`
+- Dueño: `Engineer`
+- Dependencias: `HU-USR-04`, `HU-MNT-02`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Matriz de decisión técnica para stack y notificaciones.
+- Criterios de aceptación:
+  - [ ] La matriz compara al menos backend, base de datos, frontend y hosting inicial.
+  - [ ] La matriz cubre email, SMS, push y WhatsApp con criterios de costo y viabilidad.
+- Tareas:
+  - [ ] Comparar opciones de stack propuestas en el pitch.
+  - [ ] Evaluar proveedores de notificación por canal prioritario.
+  - [ ] Cruzar preferencias de canal con evidencia de usuarios.
+  - [ ] Recomendar una combinación técnica inicial con justificación.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+#### HU-TEC-04 Consolidar arquitectura conceptual
+
+- ID: `HU-TEC-04`
+- Título: Consolidar la arquitectura conceptual mínima
+- Como / Quiero / Para: Como `Engineer`, quiero consolidar la arquitectura conceptual mínima, para que la decisión Go / No-go tenga una base técnica defendible.
+- Semana objetivo: `w4`
+- Dueño: `Engineer`
+- Dependencias: `HU-TEC-01`, `HU-TEC-02`, `HU-TEC-03`, `HU-MNT-03`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Documento de arquitectura conceptual.
+- Criterios de aceptación:
+  - [ ] El documento describe componentes mínimos, flujo de datos y riesgos técnicos abiertos.
+  - [ ] El documento incorpora explícitamente necesidades de mantenimiento, versionado y notificación.
+- Tareas:
+  - [ ] Integrar modelo mínimo, reglas, versionado y stack en una sola propuesta.
+  - [ ] Describir el flujo de datos desde fuente oficial hasta usuario final.
+  - [ ] Registrar riesgos técnicos abiertos y supuestos no resueltos.
+  - [ ] Publicar la arquitectura conceptual de referencia del ciclo.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+### Épica 4.5 Legal y cumplimiento
+
+| Épica | Objetivo | Dueño | Prioridad | Entregable macro | % avance |
+|---|---|---|---|---|---:|
+| 4.5 Legal y cumplimiento | Determinar si el servicio puede operar como producto informativo con riesgo legal manejable. | Abogado fiscal + Product Researcher | Alta | Memorando legal con riesgos, límites operativos y disclaimers base | 0% |
+
+Salida esperada: memorando legal que defina el borde operativo del producto y señale si existe un bloqueo legal para avanzar.
+
+#### HU-LEG-01 Delimitar información vs asesoría fiscal
+
+- ID: `HU-LEG-01`
+- Título: Delimitar el borde entre información fiscal y asesoría fiscal
+- Como / Quiero / Para: Como `Abogado fiscal`, quiero delimitar información vs asesoría fiscal, para definir cómo puede posicionarse el producto sin cruzar una línea regulada.
+- Semana objetivo: `w3`
+- Dueño: `Abogado fiscal`
+- Dependencias: `HU-TEC-01`, `HU-REG-04`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Criterio legal base sobre el posicionamiento del producto.
+- Criterios de aceptación:
+  - [ ] Existe una definición documentada del borde entre información y asesoría.
+  - [ ] Existe una recomendación clara de wording y límites operativos iniciales.
+- Tareas:
+  - [ ] Revisar la funcionalidad mínima propuesta del servicio.
+  - [ ] Analizar la frontera regulatoria en los mercados prioritarios.
+  - [ ] Documentar riesgos de lenguaje, promesa y automatización.
+  - [ ] Proponer lineamientos iniciales de posicionamiento.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+#### HU-LEG-02 Evaluar responsabilidad, privacidad y restricciones
+
+- ID: `HU-LEG-02`
+- Título: Evaluar responsabilidad, privacidad y restricciones de operación
+- Como / Quiero / Para: Como `Abogado fiscal`, quiero evaluar responsabilidad, privacidad y restricciones, para medir la exposición jurídica y de datos del servicio.
+- Semana objetivo: `w3-w4`
+- Dueño: `Abogado fiscal`
+- Dependencias: `HU-LEG-01`, `HU-REG-03`, `HU-MNT-02`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Análisis legal de responsabilidad, privacidad y restricciones.
+- Criterios de aceptación:
+  - [ ] El análisis cubre responsabilidad por errores de fecha, privacidad y retención de datos.
+  - [ ] El análisis señala mercados o prácticas que podrían bloquear la operación.
+- Tareas:
+  - [ ] Revisar escenarios de responsabilidad por información incorrecta.
+  - [ ] Mapear obligaciones base de privacidad y retención de datos.
+  - [ ] Identificar restricciones de operación o licencias por mercado.
+  - [ ] Resumir riesgos legales altos, medios y bajos.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+#### HU-LEG-03 Consolidar memorando legal y disclaimers base
+
+- ID: `HU-LEG-03`
+- Título: Consolidar memorando legal y disclaimers base
+- Como / Quiero / Para: Como `Product Researcher`, quiero consolidar el memorando legal y los disclaimers base, para que la decisión final tenga límites operativos claros y accionables.
+- Semana objetivo: `w4-w5`
+- Dueño: `Product Researcher`
+- Dependencias: `HU-LEG-01`, `HU-LEG-02`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Memorando legal final con disclaimers base.
+- Criterios de aceptación:
+  - [ ] El memorando clasifica el riesgo legal como manejable, condicionado o bloqueante.
+  - [ ] El memorando incluye disclaimers base y límites de operación recomendados.
+- Tareas:
+  - [ ] Integrar hallazgos legales en un solo memorando.
+  - [ ] Redactar los disclaimers base y notas de responsabilidad sugeridas.
+  - [ ] Señalar dependencias legales que condicionen el Go / No-go.
+  - [ ] Publicar la versión final del memorando legal.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+### Épica 4.6 Modelo de negocio
+
+| Épica | Objetivo | Dueño | Prioridad | Entregable macro | % avance |
+|---|---|---|---|---|---:|
+| 4.6 Modelo de negocio | Determinar si existe una forma sostenible de monetizar el servicio bajo los costos y restricciones detectados. | Product Researcher + Engineer | Alta | Modelo financiero one-pager con escenarios y recomendación de modelo inicial | 0% |
+
+Salida esperada: recomendación de modelo de negocio inicial con sensibilidad a costos de mantenimiento y señal de margen positivo o negativo.
+
+#### HU-BIZ-01 Benchmark de pricing y churn
+
+- ID: `HU-BIZ-01`
+- Título: Construir benchmark de pricing y churn comparable
+- Como / Quiero / Para: Como `Product Researcher`, quiero construir un benchmark de pricing y churn, para evaluar referencias realistas de monetización y retención.
+- Semana objetivo: `w3-w4`
+- Dueño: `Product Researcher`
+- Dependencias: `HU-CMP-03`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Benchmark de pricing y churn comparable.
+- Criterios de aceptación:
+  - [ ] Existe benchmark de pricing para los modelos más comparables.
+  - [ ] Existe benchmark o proxy razonable de churn para productos parecidos.
+- Tareas:
+  - [ ] Extraer pricing relevante del benchmark competitivo.
+  - [ ] Buscar referencias de churn o proxies por tipo de producto.
+  - [ ] Agrupar referencias por B2C, B2B y B2B2C cuando aplique.
+  - [ ] Publicar una lectura comparativa para negocio.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+#### HU-BIZ-02 Estimar TAM, CAC y LTV
+
+- ID: `HU-BIZ-02`
+- Título: Estimar TAM, CAC y LTV preliminares
+- Como / Quiero / Para: Como `Engineer`, quiero estimar TAM, CAC y LTV preliminares, para medir si el negocio podría sostenerse con los costos operativos esperados.
+- Semana objetivo: `w4-w5`
+- Dueño: `Engineer`
+- Dependencias: `HU-USR-04`, `HU-BIZ-01`, `HU-MNT-05`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Estimación preliminar de TAM, CAC y LTV.
+- Criterios de aceptación:
+  - [ ] Los supuestos de TAM, CAC y LTV están documentados y trazables.
+  - [ ] La estimación ya incorpora costo de mantenimiento por país como variable crítica.
+- Tareas:
+  - [ ] Estimar tamaño de mercado por país y segmento prioritario.
+  - [ ] Definir supuestos de adquisición por canal potencial.
+  - [ ] Estimar LTV preliminar por tipo de cliente.
+  - [ ] Documentar sensibilidad del modelo a costo de mantenimiento y churn.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+#### HU-BIZ-03 Construir escenarios y recomendar modelo inicial
+
+- ID: `HU-BIZ-03`
+- Título: Construir escenarios y recomendar un modelo inicial
+- Como / Quiero / Para: Como `Product Researcher`, quiero construir escenarios y recomendar un modelo inicial, para que la decisión final tenga una tesis económica concreta.
+- Semana objetivo: `w5`
+- Dueño: `Product Researcher`
+- Dependencias: `HU-BIZ-01`, `HU-BIZ-02`, `HU-LEG-03`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Modelo financiero one-pager con recomendación.
+- Criterios de aceptación:
+  - [ ] El one-pager incluye escenarios conservador, base y optimista.
+  - [ ] Existe una recomendación explícita de modelo inicial y sus principales riesgos.
+- Tareas:
+  - [ ] Integrar pricing, churn, TAM, CAC, LTV y costo de mantenimiento.
+  - [ ] Modelar escenarios conservador, base y optimista.
+  - [ ] Comparar alternativas de monetización y escoger una recomendación.
+  - [ ] Publicar el one-pager de negocio para la decisión Go / No-go.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+### Épica 4.7 Mantenimiento y actualización del calendario
+
+| Épica | Objetivo | Dueño | Prioridad | Entregable macro | % avance |
+|---|---|---|---|---|---:|
+| 4.7 Mantenimiento y actualización del calendario | Determinar si el calendario puede mantenerse actualizado con un costo y confiabilidad compatibles con el negocio. | Engineer + Experto fiscal + Product Researcher | **Prioridad crítica** | Modelo operativo de mantenimiento, costo mensual por país y reporte del PoC | 0% |
+
+Salida esperada: modelo operativo defendible para mantener el calendario, con límites claros de automatización, revisión humana y costo mensual por país.
+
+#### HU-MNT-01 Mapear tipos y frecuencia de cambios
+
+- ID: `HU-MNT-01`
+- Título: Mapear tipos de cambio y frecuencia histórica por país
+- Como / Quiero / Para: Como `Experto fiscal`, quiero mapear tipos y frecuencia de cambios tributarios, para dimensionar la carga operativa real de mantener el calendario al día.
+- Semana objetivo: `w2-w3`
+- Dueño: `Experto fiscal`
+- Dependencias: `HU-REG-03`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Inventario de tipos de cambio y frecuencia histórica por país.
+- Criterios de aceptación:
+  - [ ] Existe clasificación de cambios: fecha, periodicidad, elegibilidad, nuevas obligaciones y derogaciones.
+  - [ ] Existe una lectura inicial de frecuencia histórica para cada mercado o al menos para los mercados más críticos.
+- Tareas:
+  - [ ] Clasificar los tipos de cambio que afectan un calendario tributario.
+  - [ ] Revisar historial de cambios o publicaciones relevantes por mercado.
+  - [ ] Registrar frecuencia observada y señales de cambios de último minuto.
+  - [ ] Marcar mercados con mayor volatilidad operativa.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+#### HU-MNT-02 Evaluar fuentes y estrategias operativas
+
+- ID: `HU-MNT-02`
+- Título: Evaluar fuentes de actualización y estrategias operativas
+- Como / Quiero / Para: Como `Product Researcher`, quiero evaluar fuentes y estrategias operativas, para decidir qué combinación de curación, scraping, alianzas o monitoreo vale la pena investigar a fondo.
+- Semana objetivo: `w3-w4`
+- Dueño: `Product Researcher`
+- Dependencias: `HU-MNT-01`, `HU-REG-04`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Evaluación comparativa de fuentes y estrategias operativas.
+- Criterios de aceptación:
+  - [ ] Existe comparación entre curación manual, scraping, monitoreo, alianzas y enfoque híbrido.
+  - [ ] Se identifican fuentes oficiales y no estructuradas con su riesgo y viabilidad.
+- Tareas:
+  - [ ] Inventariar fuentes oficiales y formatos por mercado.
+  - [ ] Evaluar la viabilidad operativa de curación manual y scraping.
+  - [ ] Revisar opciones de alianzas, proveedores y monitoreo de cambios.
+  - [ ] Documentar riesgos, costos y límites de cada estrategia.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+#### HU-MNT-03 Diseñar flujo híbrido con validación humana
+
+- ID: `HU-MNT-03`
+- Título: Diseñar el flujo híbrido de actualización con validación humana
+- Como / Quiero / Para: Como `Engineer`, quiero diseñar un flujo híbrido con validación humana, para tener una propuesta operativa defendible antes de construir automatizaciones complejas.
+- Semana objetivo: `w4`
+- Dueño: `Engineer`
+- Dependencias: `HU-MNT-02`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Flujo operativo híbrido de detección, validación y publicación.
+- Criterios de aceptación:
+  - [ ] El flujo describe detección, revisión humana, publicación y notificación a usuarios afectados.
+  - [ ] El flujo señala explícitamente dónde la automatización no puede publicar sola.
+- Tareas:
+  - [ ] Diseñar el flujo desde detección de cambio hasta publicación.
+  - [ ] Definir puntos de validación humana obligatoria.
+  - [ ] Incorporar versionado, audit log y notificación de cambios.
+  - [ ] Revisar el flujo con experto fiscal y Product Researcher.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+#### HU-MNT-04 Ejecutar PoC de PDFs sobre 50 resoluciones
+
+- ID: `HU-MNT-04`
+- Título: Ejecutar PoC de extracción documental sobre 50 resoluciones
+- Como / Quiero / Para: Como `Engineer`, quiero ejecutar un PoC de extracción documental sobre 50 resoluciones, para medir si la automatización parcial aporta precisión suficiente al mantenimiento.
+- Semana objetivo: `w4`
+- Dueño: `Engineer`
+- Dependencias: `HU-MNT-02`, `HU-TEC-01`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Reporte del PoC de extracción documental.
+- Criterios de aceptación:
+  - [ ] El PoC se ejecuta sobre 50 resoluciones reales de 3 países.
+  - [ ] El reporte documenta precisión, costo y necesidad de revisión humana.
+- Tareas:
+  - [ ] Seleccionar 50 resoluciones reales de 3 países para el PoC.
+  - [ ] Ejecutar la extracción con el enfoque técnico definido.
+  - [ ] Medir precisión de fechas, categorías y jurisdicciones extraídas.
+  - [ ] Documentar costo y puntos de falla observados.
+  - [ ] Publicar el reporte de resultados del PoC.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+#### HU-MNT-05 Estimar costo mensual por país y criterio de viabilidad
+
+- ID: `HU-MNT-05`
+- Título: Estimar costo mensual por país y criterio de viabilidad operativa
+- Como / Quiero / Para: Como `Engineer`, quiero estimar costo mensual por país y criterio de viabilidad, para determinar si el mantenimiento es o no el cuello de botella del negocio.
+- Semana objetivo: `w5`
+- Dueño: `Engineer`
+- Dependencias: `HU-MNT-03`, `HU-MNT-04`
+- Estado: `No iniciada`
+- % avance: `0%`
+- Entregable: Estimación de costo mensual por país y criterio de viabilidad.
+- Criterios de aceptación:
+  - [ ] Existe costo estimado mensual por país para el modelo operativo recomendado.
+  - [ ] Existe una conclusión explícita sobre si el mantenimiento es manejable o bloqueante.
+- Tareas:
+  - [ ] Consolidar costos de personas, automatización y proveedores.
+  - [ ] Estimar costo mensual por país en el modelo operativo recomendado.
+  - [ ] Definir umbral de viabilidad y alertas de costo.
+  - [ ] Documentar la conclusión operativa para negocio y Go / No-go.
+- Evidencia:
+  - Fuente:
+  - Fecha:
+  - Hallazgo:
+  - Ubicación del artefacto:
+- Bloqueos: Ninguno al inicio.
+
+## Dependencias críticas
+
+- `HU-REG-01` habilita el cierre de alcance para todo el backlog.
+- `HU-REG-04` es insumo directo para `HU-TEC-02`, `HU-LEG-01` y `HU-MNT-02`.
+- `HU-USR-02`, `HU-USR-03` y `HU-USR-04` alimentan pricing, canal y confianza para `HU-CMP-03` y toda la épica 4.6.
+- `HU-MNT-01` a `HU-MNT-05` condicionan técnica, negocio y el Go / No-go.
+- `HU-LEG-03` puede bloquear la recomendación final aunque el resto del backlog esté completo.
+- La secuencia crítica del ciclo es:
+  1. Cerrar alcance regulatorio y setup de usuarios.
+  2. Completar base regulatoria, entrevistas y benchmark.
+  3. Profundizar mantenimiento, técnica y legal.
+  4. Modelar negocio con base en costos y restricciones ya validados.
+  5. Usar semana 6 para cerrar HUs en revisión y ejecutar Go / No-go.
+
+## Riesgos bloqueantes
 
 | Riesgo | Impacto | Mitigación | Dueño |
 |---|---|---|---|
-| El costo de mantener el calendario actualizado por país es demasiado alto. | Rompe el margen y vuelve inviable el negocio. | Priorizar 4.7 desde semana 1, ejecutar PoC, cotizar proveedores y comparar manual vs. híbrido vs. automatizado. | Engineer |
-| El producto cruza la línea hacia asesoría fiscal regulada. | Exposición legal o necesidad de licencias no previstas. | Obtener memorando legal temprano, limitar positioning del producto y diseñar disclaimers base. | Abogado fiscal |
-| El alcance se expande a más países o a automatización de declaración. | Dilución del foco y atraso del ciclo. | Mantener checklist de no-gos y revisar desvíos en cada cierre semanal. | Product Researcher |
-| Las fuentes oficiales son ambiguas, tardías o difíciles de monitorear. | Baja precisión del calendario y pérdida de confianza. | Priorizar mercados con mejor trazabilidad, registrar nivel de confianza del dato y diseñar revisión humana. | Experto fiscal |
-| El PoC de extracción documental tiene precisión insuficiente. | Debilita la hipótesis de automatización parcial. | Mantener validación humana obligatoria y comparar costo contra curación manual. | Engineer |
-| No se logra reclutar suficientes usuarios o contadores. | Debilita evidencia de mercado y pricing. | Iniciar reclutamiento en semana 1, usar múltiples canales y priorizar segmentos críticos. | UX Researcher |
-| La diferenciación frente a competidores es débil. | El producto puede ser irrelevante o fácilmente copiable. | Cruzar hallazgos de usuarios con benchmark competitivo y forzar una tesis explícita de diferenciación en semana 5. | Product Researcher |
+| El costo de mantenimiento por país es inviable. | Puede invalidar el negocio aun con demanda. | Priorizar la épica 4.7 y cerrar `HU-MNT-05` antes de decidir. | Engineer |
+| El producto cruza la línea hacia asesoría fiscal regulada. | Puede bloquear la operación o exigir licencias. | Resolver `HU-LEG-01` y `HU-LEG-03` antes del cierre del ciclo. | Abogado fiscal |
+| La estructurabilidad de datos es insuficiente. | El calendario personalizado no sería confiable. | Cerrar `HU-REG-04` y `HU-TEC-02` con revisión cruzada. | Product Researcher + Engineer |
+| No aparece diferenciación competitiva defendible. | La oportunidad de mercado se debilita. | Cruzar `HU-CMP-03` con `HU-USR-04` y `HU-BIZ-03`. | Product Researcher |
+| La muestra de usuarios o encuesta es insuficiente. | La validación de dolor y pricing queda débil. | Priorizar `HU-USR-01` y monitorear calidad de muestra durante `HU-USR-04`. | UX Researcher |
 
-## Equipo y responsabilidades
+## Criterios de cierre y Go / No-go
 
-| Rol | Responsabilidad principal | Entregables a su cargo | Ritmo de participación |
+| Check | Criterio | Evidencia mínima | HU que lo sostienen |
 |---|---|---|---|
-| Product Researcher (lead) | Coordinar el ciclo, integrar hallazgos, priorizar trabajo y preparar la decisión final. | Síntesis semanal, matriz de hipótesis, mapa competitivo, modelo de negocio, documento de decisión final. | Tiempo completo durante las 6 semanas. |
-| Experto fiscal | Traducir regulación a estructura utilizable, validar fuentes y revisar viabilidad tributaria por mercado. | Matriz tributaria, revisión de criterios de elegibilidad, análisis de sanciones y soporte al modelo de mantenimiento. | Participación continua, con mayor carga en semanas 1-5. |
-| Engineer (técnico) | Evaluar factibilidad técnica, modelado de reglas, arquitectura y operación del mantenimiento. | Documento de arquitectura conceptual, evaluación de stack, PoC de extracción documental, costo operativo de mantenimiento. | Dedicación del 50% durante el ciclo. |
-| Abogado fiscal | Acotar exposición legal, privacidad, disclaimers y límites de operación. | Memorando legal, recomendaciones de disclaimers, restricciones operativas por mercado. | Consultoría puntual, concentrada en semanas 3-5. |
-| UX Researcher | Diseñar y ejecutar la investigación con usuarios, sintetizar dolores y validar disposición a pagar. | Guía de entrevistas, reclutamiento, entrevistas, encuesta, JTBD y personas. | Participación continua, con mayor carga en semanas 1-5. |
+| [ ] | El problema es real y recurrente. | Entrevistas y encuesta muestran dolor en más del 70% de la muestra relevante. | `HU-USR-02`, `HU-USR-03`, `HU-USR-04` |
+| [ ] | Existe disposición a pagar suficiente. | Señal cuantitativa y cualitativa superior a USD 10/mes como referencia base. | `HU-USR-04`, `HU-BIZ-01`, `HU-BIZ-03` |
+| [ ] | Al menos 5 mercados son estructurables. | Matriz tributaria usable y revisión técnica positiva. | `HU-REG-04`, `HU-TEC-01`, `HU-TEC-02` |
+| [ ] | El riesgo legal es manejable. | Memorando legal final sin bloqueo estructural. | `HU-LEG-01`, `HU-LEG-02`, `HU-LEG-03` |
+| [ ] | El mantenimiento es viable. | Costo mensual por país defendible y flujo híbrido validado. | `HU-MNT-03`, `HU-MNT-04`, `HU-MNT-05` |
+| [ ] | Existe diferenciación defendible. | Dos o más vectores claros de diferenciación. | `HU-CMP-03`, `HU-USR-04` |
+| [ ] | El negocio puede tener margen positivo. | One-pager con escenario conservador sostenible a 18 meses. | `HU-BIZ-02`, `HU-BIZ-03` |
 
-**Cadencia de coordinación**
+Regla de cierre:
 
-- Sync operativo semanal: revisión de avances, bloqueos y cambios de prioridad.
-- Revisión de evidencia semanal: actualización del tracker de hipótesis y de los criterios Go / No-go.
-- Cierre de semana 6: preparación de betting table y decisión final.
+- `Go`: todos los checks críticos completos y sin bloqueos abiertos en legal o mantenimiento.
+- `Go condicionado`: señal positiva general, pero queda una HU crítica en `En revisión` con fecha de cierre definida.
+- `No-go`: falla cualquiera de los criterios estructurales de legal, mantenimiento, estructurabilidad o margen.
 
-## Anexos
+## Anexos operativos
 
-### Checklist de entrevistas
+### Vista mínima por semana
 
-- Confirmar segmento del entrevistado antes de la sesión.
-- Registrar país, tipo de contribuyente y complejidad fiscal actual.
-- Preguntar cómo controla hoy fechas y obligaciones tributarias.
-- Identificar olvidos previos, multas, recargos o errores de cumplimiento.
-- Registrar herramientas actuales y carencias percibidas.
-- Explorar qué necesitaría para confiar en alertas tributarias automatizadas.
-- Medir disposición a pagar y condiciones para hacerlo.
-- Preguntar por canales preferidos de recordatorio: email, SMS, push, WhatsApp.
-- En contadores, validar si usarían un panel multi-cliente y bajo qué modelo.
-- Cerrar cada entrevista con una clasificación de severidad del problema y citas textuales útiles.
+| Semana | HU planeadas |
+|---|---|
+| w1 | `HU-REG-01`, `HU-REG-02`, `HU-USR-01`, `HU-CMP-01` |
+| w2 | `HU-REG-02`, `HU-REG-03`, `HU-USR-02`, `HU-USR-03`, `HU-CMP-01`, `HU-CMP-02`, `HU-TEC-01`, `HU-MNT-01` |
+| w3 | `HU-REG-03`, `HU-REG-04`, `HU-USR-02`, `HU-USR-03`, `HU-USR-04`, `HU-CMP-02`, `HU-TEC-02`, `HU-TEC-03`, `HU-LEG-01`, `HU-LEG-02`, `HU-BIZ-01`, `HU-MNT-01`, `HU-MNT-02` |
+| w4 | `HU-USR-04`, `HU-CMP-03`, `HU-TEC-02`, `HU-TEC-03`, `HU-TEC-04`, `HU-LEG-02`, `HU-LEG-03`, `HU-BIZ-01`, `HU-BIZ-02`, `HU-MNT-02`, `HU-MNT-03`, `HU-MNT-04` |
+| w5 | `HU-USR-04`, `HU-LEG-03`, `HU-BIZ-02`, `HU-BIZ-03`, `HU-MNT-05` |
+| w6 | Cierre de HU en revisión, consolidación de evidencia y decisión Go / No-go |
 
-### Lista de países
+### Mercados objetivo
 
-| Región | País | Estado en el plan |
-|---|---|---|
-| Latinoamérica | México | Incluido |
-| Latinoamérica | Colombia | Incluido |
-| Latinoamérica | Argentina | Incluido |
-| Latinoamérica | Chile | Incluido |
-| Latinoamérica | Brasil | Incluido |
-| Norteamérica | EE.UU. | Incluido |
-| Norteamérica | Canadá | Incluido |
-| Europa | España | Incluido |
-| Europa | Alemania | Incluido |
-| Asia-Pacífico | Australia o India | Resolver en semana 1 según accesibilidad de fuentes y relevancia comercial |
+- México
+- Colombia
+- Argentina
+- Chile
+- Brasil
+- EE.UU.
+- Canadá
+- España
+- Alemania
+- Australia o India, a resolver con `HU-REG-01`
 
-### Lista de competidores
+### Base competitiva inicial
 
-| Tipo | Nombre | Nota de análisis |
-|---|---|---|
-| Directo | TaxJar | Referencia de automatización fiscal en EE.UU. |
-| Directo | Avalara | Referencia enterprise/global. |
-| Directo | QuickBooks Tax | Referencia de módulo fiscal dentro de suite contable. |
-| Directo | Taxfix | Referencia consumer para renta simplificada. |
-| Directo | Declarando.es | Referencia de freelancers en España. |
-| Regional LATAM | Alegra | Referencia de software administrativo con componente fiscal. |
-| Regional LATAM | Siigo | Referencia de software empresarial en Colombia. |
-| Regional LATAM | CONTPAQi | Referencia local en México. |
-| Regional LATAM | Aspel | Referencia local en México. |
-| Regional LATAM | Colppy | Referencia local en Argentina. |
-| Regional LATAM | Xubio | Referencia local en Argentina. |
+- TaxJar
+- Avalara
+- QuickBooks Tax
+- Taxfix
+- Declarando.es
+- Alegra
+- Siigo
+- CONTPAQi
+- Aspel
+- Colppy
+- Xubio
 
-### Fuentes de referencia
+### Plantilla mínima de evidencia reutilizable
 
-**Fuentes internacionales**
-
-- OECD Tax Database
-- IBFD Country Surveys
-- Tax Foundation International Tax Competitiveness Index
-- CIAT
-- World Bank, sección histórica de impuestos
-
-**Fuentes oficiales por país a levantar en la matriz**
-
-- México: SAT y DOF
-- Colombia: DIAN
-- Argentina: AFIP
-- Chile: SII
-- Brasil: Receita Federal
-- EE.UU.: IRS
-- España: AEAT
-- Canadá: CRA
-- Australia o India: autoridad fiscal a confirmar en semana 1
-
-**Fuentes para mantenimiento y monitoreo**
-
-- Calendarios oficiales en HTML, PDF, iCal o boletines
-- Resoluciones, decretos y diarios oficiales
-- Proveedores de datos fiscales
-- Referencias operativas de competidores
-
+- Fuente:
+- Fecha:
+- Hallazgo:
+- Ubicación del artefacto:
